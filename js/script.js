@@ -32,7 +32,12 @@ initGame(numberBox);
 function initGame(parametroN){
 
   for( let i = 0; i < parametroN; i++ ){
-    createBoxElement(gameArea);
+
+    const boxEr = createBoxElement( gameArea );
+    boxEr.addEventListener('click', function(){
+      this.classList.add('check');
+    })
+
   }
 
 }
