@@ -6,11 +6,13 @@ con difficoltà 3 => tra 1 e 49
 Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 */
 
-//prendo il conteniroe dei box
 const gameArea = document.getElementById('sd-game-area');
-//mi serve un bottone che raccolga i dati della scelta utente
 
+//evento
 document.getElementById('btn-start').addEventListener('click', function(){
+
+  gameArea.innerHTML = '';
+
   let numberBox, size;
   const levelChoice = document.getElementById('level-choice').value;
 
@@ -33,31 +35,42 @@ initGame(numberBox, gameArea, size );
 
 
 //function
-
-//funzione che stampa in pagina tot box
-function initGame(parametroN, location, parameterSize){
-
+//questa funzione è generica con piu elementi per poter stampare in quelunque contenitore e con diverse taglie.
+/**
+ * stampa in pagina tot box, in una certa size in un contenitore 
+ * @param {number} parametroN 
+ * @param {string} placeInHtml 
+ * @param {number} parameterSize 
+ */
+function initGame(parametroN, placeInHtml, parameterSize){
+  
   for( let i = 0; i < parametroN; i++ ){
 
-    const boxEr = createBoxElement( location, parameterSize );
+    const boxEr = createBoxElement( placeInHtml, parameterSize );
     boxEr.addEventListener('click', function(){
       this.classList.add('check');
+  
     })
   }
 }
 
 
-//funzione che crea l'elemento e lo appende in un contenitore
-function createBoxElement(container, parameter){
+/**
+ * crea un'elemnto div-box e lo mette in un contenitore
+ * @param {string} htmlElement 
+ * @param {number} num 
+ * @returns 
+ */
+function createBoxElement(htmlElement, num){
 
   const box = document.createElement('div');
   box.className = 'sd-box';
-  container.append(box);
-
-  if( parameter === 1 ){
+  htmlElement.append(box);
+  box.innerHTML = `<span> X </span>`;
+  if( num === 1 ){
     box.classList.add('easy');
 
-  }else if( parameter === 2 ){
+  }else if( num === 2 ){
     box.classList.add('hard');
 
   }else{

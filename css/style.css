@@ -73,7 +73,7 @@ body{
   height: calc( 600px / 10);
 }
 
-.sd-box p{
+.sd-box span{
   display: none;
 }
 
