@@ -5,3 +5,5 @@ con difficoltà 2 => tra 1 e 81
 con difficoltà 3 => tra 1 e 49
 Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 */
+
+//mi serve un bottone che raccolga i dati della scelta utente
