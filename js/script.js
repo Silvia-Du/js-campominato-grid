@@ -7,3 +7,10 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 */
 
 //mi serve un bottone che raccolga i dati della scelta utente
+
+document.getElementById('btn-start').addEventListener('click', function(){
+
+  const levelChoice = document.getElementById('level-choice').value;
+
+  console.log(levelChoice);
+})
