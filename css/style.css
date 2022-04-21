@@ -31,12 +31,13 @@ body{
   width: 30%;
 }
 
-.sd-game-area{
+#sd-game-area{
   width: 600px;
   height: 600px;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  border-radius: 10px;
   background-color:rgb(43, 43, 95);
 }
 
@@ -48,7 +49,8 @@ body{
   font-weight: bold;
   font-size: 1.3rem;
   background-color: aliceblue;
-  border: 2px solid rgb(86, 60, 133);
+  border: 2px solid cadetblue;
+  border-radius: 15px;
 }
 
 .sd-box.check{
