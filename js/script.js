@@ -5,7 +5,7 @@ con difficoltà 2 => tra 1 e 81
 con difficoltà 3 => tra 1 e 49
 Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 */
-
+const randomNumContainer = [];
 const gameArea = document.getElementById('sd-game-area');
 
 //evento
@@ -79,3 +79,51 @@ function createBoxElement(htmlElement, num){
 
   return box;
 }
+
+min = 1;
+max = 10;
+//genera numero randomico
+function uniqueRandomNumber( min ,max ){
+
+  let chekRandom = false;
+  let randomicNum ;
+
+  while(!chekRandom){
+    randomicNum = getRandomNum( min, max );
+
+    if(!randomNumContainer.includes(randomicNum)){
+      chekRandom = true;
+      randomNumContainer.push(randomicNum);
+
+    }
+    console.log(randomNumContainer);
+
+  }
+  return randomicNum;
+
+  // for(let i = min; i<= max ; i++){
+  //   let randomicNum = getRandomNum( min, max );
+
+  //   if(!randomNumContainer.includes(randomicNum)){
+  //     randomNumContainer.push(randomicNum);
+  //     return randomicNum;
+  //   }
+    
+  //   console.log(randomNumContainer);
+  // }
+
+
+}
+
+function getRandomNum( max,min ){
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+console.log(uniqueRandomNumber( 1 , 20 ));
+console.log(uniqueRandomNumber( 1 , 20 ));
+console.log(uniqueRandomNumber( 1 , 20 ));
+console.log(uniqueRandomNumber( 1 , 20 ));
+
+
+
+
