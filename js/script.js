@@ -9,16 +9,34 @@ document.getElementById('btn-start').addEventListener('click', function(){
 
   const levelChoice = document.getElementById('level-choice').value;
   const level = [100, 81, 49];
-
   const boxNumber = level[levelChoice];
+  
 
-  const boxSize = Math.sqrt(boxNumber);
-
-  initGame(boxNumber, gameArea, );
+  initGame(boxNumber, gameArea)
+ 
 })
 
 
 //function
+
+/**
+ * crea un'elemnto div-box e lo mette in un contenitore
+ * @param {string} htmlElement 
+ * @param {number} num 
+ * @returns 
+ */
+ function createBoxElement(boxNumber, htmlElement){
+
+  const box = document.createElement('div');
+  box.className = 'sd-box';
+  const boxXRow = Math.sqrt( boxNumber );
+  const boxSize = `calc ( 100% / ${boxXRow})`;
+  box.style.width = boxSize;
+  box.style.height = boxSize;
+  htmlElement.append(box);
+  
+  return box;
+}
 
 /**
  * stampa in pagina tot box, in una certa size in un contenitore 
@@ -26,11 +44,11 @@ document.getElementById('btn-start').addEventListener('click', function(){
  * @param {string} placeInHtml 
  * @param {number} parameterSize 
  */
-function initGame(parametroN, placeInHtml, parameterSize){
+function initGame(boxNumber, htmlElement){
   
-  for( let i = 1; i <= parametroN; i++ ){
+  for( let i = 1; i <= boxNumber; i++ ){
     
-    const boxEr = createBoxElement( placeInHtml, parameterSize );
+    const boxEr = createBoxElement(boxNumber, htmlElement);
     boxEr.innerHTML = `<span>${i}</span>`;
     boxEr.addEventListener('click', function(){
       this.classList.add('check');
@@ -40,31 +58,7 @@ function initGame(parametroN, placeInHtml, parameterSize){
 }
 
 
-/**
- * crea un'elemnto div-box e lo mette in un contenitore
- * @param {string} htmlElement 
- * @param {number} num 
- * @returns 
- */
-function createBoxElement(htmlElement, num){
 
-  const box = document.createElement('div');
-  box.className = 'sd-box';
-  htmlElement.append(box);
-  
-  if( num === 1 ){
-    box.classList.add('easy');
-   
-  }else if( num === 2 ){
-    box.classList.add('hard');
-
-  }else{
-    box.classList.add('crazy');
-    
-  }
-
-  return box;
-}
 
 let estractNumber;
 let selected;
