@@ -7,24 +7,14 @@ document.getElementById('btn-start').addEventListener('click', function(){
 
   gameArea.innerHTML = '';
 
-  let numberBox, size;
   const levelChoice = document.getElementById('level-choice').value;
+  const level = [100, 81, 49];
 
-  if(levelChoice === 'Easy'){
-    numberBox = 49;
-    size = 1;
+  const boxNumber = level[levelChoice];
 
-  }else if(levelChoice === 'Hard'){
-    numberBox = 81;
-    size = 2;
+  const boxSize = Math.sqrt(boxNumber);
 
-  }else{
-    numberBox = 100;
-    size = 3;
-
-  }
-
-  initGame(numberBox, gameArea, size );
+  initGame(boxNumber, gameArea, );
 })
 
 
