@@ -74,7 +74,7 @@ body{
 }
 
 .sd-box span{
-  display: none;
+  /* display: none; */
 }
 
 .sd-box.check p{

@@ -1,11 +1,5 @@
-/*
-L’utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range:
-con difficoltà 1 => tra 1 e 100
-con difficoltà 2 => tra 1 e 81
-con difficoltà 3 => tra 1 e 49
-Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
-*/
-const randomNumContainer = [];
+
+
 const gameArea = document.getElementById('sd-game-area');
 
 //evento
@@ -30,12 +24,12 @@ document.getElementById('btn-start').addEventListener('click', function(){
 
   }
 
-initGame(numberBox, gameArea, size );
+  initGame(numberBox, gameArea, size );
 })
 
 
 //function
-//questa funzione è generica con piu elementi per poter stampare in quelunque contenitore e con diverse taglie.
+
 /**
  * stampa in pagina tot box, in una certa size in un contenitore 
  * @param {number} parametroN 
@@ -44,9 +38,10 @@ initGame(numberBox, gameArea, size );
  */
 function initGame(parametroN, placeInHtml, parameterSize){
   
-  for( let i = 0; i < parametroN; i++ ){
-
+  for( let i = 1; i <= parametroN; i++ ){
+    
     const boxEr = createBoxElement( placeInHtml, parameterSize );
+    boxEr.innerHTML = `<span>${i}</span>`;
     boxEr.addEventListener('click', function(){
       this.classList.add('check');
   
@@ -66,64 +61,52 @@ function createBoxElement(htmlElement, num){
   const box = document.createElement('div');
   box.className = 'sd-box';
   htmlElement.append(box);
-  box.innerHTML = `<span> X </span>`;
+  
   if( num === 1 ){
     box.classList.add('easy');
-
+   
   }else if( num === 2 ){
     box.classList.add('hard');
 
   }else{
     box.classList.add('crazy');
+    
   }
 
   return box;
 }
 
-min = 1;
-max = 10;
-//genera numero randomico
-function uniqueRandomNumber( min ,max ){
+let estractNumber;
+let selected;
+const magazzinoNum =[];
 
-  let chekRandom = false;
-  let randomicNum ;
+//generatore numero univoco
+function uniqueRandomNum( number ){
 
-  while(!chekRandom){
-    randomicNum = getRandomNum( min, max );
-
-    if(!randomNumContainer.includes(randomicNum)){
-      chekRandom = true;
-      randomNumContainer.push(randomicNum);
-
+  for( let i = 0; i< number; i++ ){
+    let check = false;
+  
+    while(!check){
+      estractNumber = randomNum(1, number);
+      console.log('numero singolo',estractNumber);
+      if(!magazzinoNum.includes(estractNumber)){
+        check = true;
+        magazzinoNum.push(estractNumber);
+        selected = estractNumber;
+        console.log('--------->',selected);
+      }
     }
-    console.log(randomNumContainer);
-
-  }
-  return randomicNum;
-
-  // for(let i = min; i<= max ; i++){
-  //   let randomicNum = getRandomNum( min, max );
-
-  //   if(!randomNumContainer.includes(randomicNum)){
-  //     randomNumContainer.push(randomicNum);
-  //     return randomicNum;
-  //   }
     
-  //   console.log(randomNumContainer);
-  // }
+    console.log('magazzino',magazzinoNum);
+  
+  }
 
 
 }
 
-function getRandomNum( max,min ){
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function randomNum( min , max ){
+  return Math.floor(Math.random() * (max - min +1) + min);
 }
-
-console.log(uniqueRandomNumber( 1 , 20 ));
-console.log(uniqueRandomNumber( 1 , 20 ));
-console.log(uniqueRandomNumber( 1 , 20 ));
-console.log(uniqueRandomNumber( 1 , 20 ));
-
 
 
 
