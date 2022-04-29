@@ -1,7 +1,5 @@
 
 
-const gameArea = document.getElementById('sd-game-area');
-
 //evento
 document.getElementById('btn-start').addEventListener('click', function(){
 
@@ -12,7 +10,7 @@ document.getElementById('btn-start').addEventListener('click', function(){
   const boxNumber = level[levelChoice];
   
 
-  initGame(boxNumber, gameArea)
+  //initGame(boxNumber, gameArea)
  
 })
 
@@ -30,7 +28,8 @@ document.getElementById('btn-start').addEventListener('click', function(){
   const box = document.createElement('div');
   box.className = 'sd-box';
   const boxXRow = Math.sqrt( boxNumber );
-  const boxSize = `calc ( 100% / ${boxXRow})`;
+  
+  const boxSize = `calc( 100% / ${boxXRow})`;
   box.style.width = boxSize;
   box.style.height = boxSize;
   htmlElement.append(box);
@@ -44,7 +43,7 @@ document.getElementById('btn-start').addEventListener('click', function(){
  * @param {string} placeInHtml 
  * @param {number} parameterSize 
  */
-function initGame(boxNumber, htmlElement){
+function boxPrinter(boxNumber, htmlElement){
   
   for( let i = 1; i <= boxNumber; i++ ){
     
@@ -88,6 +87,7 @@ function uniqueRandomNum( number ){
 
 }
 
+//generatore numero random
 function randomNum( min , max ){
   return Math.floor(Math.random() * (max - min +1) + min);
 }
